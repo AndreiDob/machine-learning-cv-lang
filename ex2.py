@@ -49,28 +49,3 @@ def run_ex2():
 if __name__ == '__main__':
     run_ex2()
 
-    '''
-    Question answers:
-    
-    Q9. 
-    a. On one of our machine which has a GPU with 4Gb of memory the epoch run time was around 7.5 seconds. However, as 
-    in the case of the first exercise, the first epoch took longer at 10-12s.
-    b. The factor that causes the first epoch to take longer is that Keras supports lazy execution. The model creation 
-    and compilation code are not executed until it is absolutely required which is right before the first training 
-    epoch. That increased time for the first epoch includes building the TensorFlow computational graph. The other 
-    epochs reuse this graph, so the overhead time is not present anymore in them.
-    c. One main difference we can observe is that the decrease in training loss is more gradual. This is explained by 
-    the lower learning rate that was chosen. Another thing is that the validation loss is initially high, but it 
-    steadily decreases more than it did in the exercise 1 trainings. One explanation would be that the task is harder 
-    so it is harder to learn how to generalize well, therefore taking more epochs to achieve this. We also see that 
-    sometimes the validation loss increases for one epoch. This can be attributed to a high learning rate, thus instead 
-    of going towards the optima point, the weights make the loss jump on the other side of the "loss valley". The reason 
-    it actually comes down is that the optimizer used has adaptive learning rate and detects the jump and decreases the 
-    learning rate accordingly
-    d. Because this is a more complex task, in which the overall image is extremely important for the detection(not only
-    parts of it), the deeper networks perform way better. This is because they have a bigger receptive field, thus they 
-    look more at the overall image rather than search for specific low-resolution features. Another impacting factor is 
-    that the exercise2 network has more convolutional layers, meaning that it can extract more features and 
-    combinations of features before actually figuring out how to combine them to predict classes(in the fully connected 
-    layers).
-    '''
